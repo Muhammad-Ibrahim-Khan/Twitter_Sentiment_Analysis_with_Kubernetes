@@ -16,6 +16,7 @@ cycler==0.11.0
 debugpy==1.5.1
 decorator==5.1.1
 defusedxml==0.7.1
+dill==0.3.4
 entrypoints==0.4
 executing==0.8.2
 flatbuffers==2.0
@@ -24,6 +25,7 @@ gast==0.5.3
 google-auth==2.6.0
 google-auth-oauthlib==0.4.6
 google-pasta==0.2.0
+googleapis-common-protos==1.54.0
 grpcio==1.43.0
 h5py==3.6.0
 idna==3.3
@@ -73,6 +75,7 @@ Pillow==9.0.1
 pkg_resources==0.0.0
 platformdirs==2.5.0
 prometheus-client==0.13.1
+promise==2.3
 prompt-toolkit==3.0.28
 protobuf==3.19.4
 ptyprocess==0.7.0
@@ -103,11 +106,13 @@ tensorboard-plugin-wit==1.8.1
 tensorflow==2.8.0
 tensorflow-hub==0.12.0
 tensorflow-io-gcs-filesystem==0.24.0
+tensorflow-metadata==1.6.0
 termcolor==1.1.0
 terminado==0.13.1
 testpath==0.5.0
 textblob==0.17.1
 tf-estimator-nightly==2.8.0.dev2021122109
+threadpoolctl==3.1.0
 tomli==2.0.1
 tornado==6.1
 tqdm==4.62.3

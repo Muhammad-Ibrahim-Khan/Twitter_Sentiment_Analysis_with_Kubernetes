@@ -97,10 +97,8 @@ else:
 # Function for making predictions
 def predict(input_text):
 
-    input_text = cleaning_text(input_text)
-    
     label = model.predict([input_text])
-    
+
     if label >= 0.5:
         return "Positive Sentiment"
     else:

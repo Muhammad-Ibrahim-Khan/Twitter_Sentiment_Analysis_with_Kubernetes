@@ -4,5 +4,6 @@ sa_env
 .ipynb_checkpoints
 notebooks/logs
 models
-src/__pycache__
-src/.idea
+.idea
+collections
+__pycache__

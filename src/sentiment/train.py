@@ -1,8 +1,6 @@
 # Imports
 import tensorflow as tf
 import json
-from preprocessing import cleaning_text
-
 from keras import Sequential
 from keras.layers import Dense, Embedding, GlobalAveragePooling1D
 from keras.layers import TextVectorization
@@ -40,11 +38,11 @@ EMBEDDING_DIM = 16
 LOAD_MODEL = True
 
 if LOAD_MODEL:
-    model = tf.keras.models.load_model('../models/tf_word_em')
+    model = tf.keras.models.load_model('/home/mik/TSA/models/tf_word_em')
 
 else:
     # Reading pre-processed data
-    file_name = '../data/Data_processed.json'
+    file_name = '../../data/Data_processed.json'
 
     tweets = []
     with open(file_name) as f:

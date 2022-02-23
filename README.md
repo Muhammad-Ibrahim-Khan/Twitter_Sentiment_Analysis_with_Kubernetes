@@ -8,6 +8,7 @@ The .py files were created for the flask API and docker images(and containers).
 ## Pre-requisites
 
 Read the requirements.txt file though pip and the necessary dependencies will be downloaded onto your virtual environment.
+
 Another pre-requisite, especially for users on Linux, is that ensure the environment is created in conda, otherwise you'll have to also download jupyter notebook
 and ipykernel in your environment before you're able to run the notebooks.
 

@@ -1,4 +1,4 @@
-# Twitter_Sentiment_Analysis
+# Twitter Sentiment Analysis
 
 This project is aimed to develop a sentiment analyzer using tweets from Twitter as our input data and training two models on them to make predictions.
 The pre-processing on data, word embedding model and GRU based implementation have been done seperately in the notebooks, kindly follow the format for the folder arrangement.

@@ -17,12 +17,12 @@ class SentimentAnalysisModel(BaseModel):
             return tf.keras.models.load_model(self.trained_model_path)
 
     def predict(self, text_list):
-        if isinstance(text_list, type(str)):
+        if isinstance(text_list, str):
             text_list = [text_list]
         
         # Clean input text
         clean_text_list = [clean_text(text) for text in text_list]
-        
+        print(text_list[0])
         labels = self.kmodel.predict(clean_text_list)
         return [
             {

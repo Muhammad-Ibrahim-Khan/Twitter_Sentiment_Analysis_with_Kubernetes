@@ -1,13 +1,14 @@
-# syntax=docker/dockerfile:1
+FROM python:3.9.12
 
-FROM python:3.8.10
-
-WORKDIR /TSA
+WORKDIR /.
 
 COPY requirements.txt requirements.txt
 
-RUN pip install -r requirements.txt
+RUN python3 -m pip install --no-cache-dir -r requirements.txt && \
+    rm requirements.txt
+
+EXPOSE 4000
 
 COPY . .
 
-CMD ["python", "run.py", "--host=0.0.0.0"]
+CMD ["python", "main.py", "--host=0.0.0.0"]

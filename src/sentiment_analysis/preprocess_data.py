@@ -1,7 +1,7 @@
 import string
 import re
 
-def cleaning_text(text):
+def clean_text(text):
     text = re.sub(r'((www.\S+)|(https?://\S+))',r' ',text)
     text = re.sub(r'[0-9]\S+', r'', text)
     text = re.sub(r'(@\S+) | (#\S+)', r'', text)

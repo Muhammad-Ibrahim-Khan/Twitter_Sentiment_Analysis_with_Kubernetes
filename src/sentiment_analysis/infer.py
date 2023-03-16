@@ -22,7 +22,6 @@ class SentimentAnalysisModel(BaseModel):
         
         # Clean input text
         clean_text_list = [clean_text(text) for text in text_list]
-        print(text_list[0])
         labels = self.kmodel.predict(clean_text_list)
         return [
             {

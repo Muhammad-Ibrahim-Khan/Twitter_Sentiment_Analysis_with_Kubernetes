@@ -1,8 +1,4 @@
-data
 notebooks/.ipynb_checkpoints
-sa_env
 .ipynb_checkpoints
-notebooks/logs
 .idea
-collections
 __pycache__

@@ -27,7 +27,7 @@ class SentimentAnalysisModel(BaseModel):
             {
                 "Text": text,
                 "Sentiment": "Positive" if label >= 0.5 else "Negative",
-                "Label": str(label[0])
+                "Score": f"{label[0]*100:.2f}"
             }
             for text, label in zip(text_list, labels)
         ]

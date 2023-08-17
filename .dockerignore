@@ -2,4 +2,5 @@ notebooks
 .ipynb_checkpoints
 .idea
 collections
+data
 __pycache__

@@ -17,6 +17,8 @@ Details on each individual element is present in the notebooks.
 
 For deploying and serving your project, this repository will also go through setting up a local Kubernetes cluster. See the final section of the README for more details on setting up your local cluster.
 
+Here is the link to the used -> [Dataset](https://www.kaggle.com/kazanova/sentiment140)
+
 ### Creating A Twitter Sentiment Analysis Docker Image
 #### Environment Setup
 
@@ -99,6 +101,9 @@ On the dashboard, you'll see the current status of your cluster (number of pods,
 
 The request.sh script sends a request to the service type object created previously. By running this, you'll be sending a POST request to an API within the cluster through this service in a loop (Interval of 0.1s).
 *Important: Check the IP of the Minikube and replace the Host in the bash script if it's different.*
+
+Run the following command in your terminal (in a separate window)
+> bash request.sh
 
 While the bash script is running, you'll notice an increase in the usage of the pods on the dashboard.
 Moreover, the time taken for a request to be completed will also be slower than the rate at which it is being sent (by you).

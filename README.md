@@ -6,7 +6,7 @@ By the end of this repository, you'll have accomplished the following
   - GRU implementation of Twitter Sentiment Analysis.
 - Created an API in Flask to serve requests using [Batch Prediction](https://www.machinelearningatscale.com/machine-learning-batch-serving/)
 - Create a Docker Image of your Application.
-- Created a Kubernetes cluster (With a Horizontal Pod Autoscalar to took care of your application's throughput).
+- Created a Kubernetes cluster (With a Horizontal Pod Autoscalar to take care of your application's throughput).
 - Deployed your Docker Image to your Kuberenetes cluster for serving.
 
 ## Twitter Sentiment Analysis

@@ -1,6 +1,6 @@
 # Overview
 By the end of this repository, you'll have accomplished the following
-- Analyzed Data and created a Pipeline to extract and clean text data
+- Analyzed Data and created a Pipeline to extract and clean textual data
 - Trained the following models:
   - Sentiment Analysis through Word Embeddings.
   - GRU implementation of Twitter Sentiment Analysis.

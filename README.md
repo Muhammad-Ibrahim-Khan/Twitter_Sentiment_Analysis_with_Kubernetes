@@ -55,6 +55,12 @@ Kubernetes is a powerful tool for managing containerized applications in product
 
 * **Minikube** - a Kubernetes distribution geared towards new users and development work. It is not meant for production deployments however since it can only run a single node cluster on your machine. Installation instructions [here](https://minikube.sigs.k8s.io/docs/start/).
 
+The configuration of the minikube cluster I set are as follows:
+- Minikube Version: 1.26.0-beta.1
+- Driver: Virtualbox
+- Kubernetes Version: 1.23.6
+- Docker Version: 20.10.14
+- Kubectl Version: 1.25.3
 
 ### Starting Minikube
 

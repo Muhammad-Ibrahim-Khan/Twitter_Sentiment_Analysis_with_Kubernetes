@@ -4,7 +4,7 @@ By the end of this repository, you'll have accomplished the following
 - Trained the following models:
   - Sentiment Analysis through Word Embeddings.
   - GRU implementation of Twitter Sentiment Analysis.
-- Created an API in Flask to serve requests using [Batch Prediction](https://www.machinelearningatscale.com/machine-learning-batch-serving/)
+- Created a minimal application in Flask to serve requests using [Batch Prediction](https://www.machinelearningatscale.com/machine-learning-batch-serving/)
 - Create a Docker Image of your Application.
 - Created a Kubernetes cluster.
 - Deployed your Docker Image to your Kuberenetes cluster for serving (With a Horizontal Pod Autoscalar to take care of your application's throughput).

@@ -5,17 +5,16 @@ By the end of this repository, you'll have accomplished the following
   - Sentiment Analysis through Word Embeddings.
   - GRU implementation of Twitter Sentiment Analysis.
 - Created a minimal application in Flask to serve requests using [Batch Prediction](https://www.machinelearningatscale.com/machine-learning-batch-serving/)
-- Create a Docker Image of your Application.
+- Containerized your application through [Docker](https://www.docker.com/).
 - Created a Kubernetes cluster.
-- Deployed your Docker Image to your Kuberenetes cluster for serving (With a Horizontal Pod Autoscalar to take care of your application's throughput).
+- Deployed your Docker Image to your Kubernetes (by creating a service and deployment type objects) cluster for serving (With a Horizontal Pod Autoscalar to handle your application's throughput).
 
 ## Twitter Sentiment Analysis
 
-This project is aimed to develop a sentiment analyzer using tweets from Twitter as our input data and training two models on them to make predictions.
-The pre-processing on data, word embedding model and GRU based implementation have been done seperately in the notebooks, kindly follow the format for the directory arrangement.
-Details on each individual element is present in the notebooks.
+The pre-processing of data, word embedding model and GRU-based implementation have been done separately in the notebooks, following the format for the directory arrangement.
+Details on each are present in the notebooks.
 
-For deploying and serving your project, this repository will also go through setting up a local Kubernetes cluster. See the final section of the README for more details on setting up your local cluster.
+For deploying and serving your project, this repository will also go through setting up a local Kubernetes cluster. Read the final section of the README for more details on setting up your local K8s cluster.
 
 Here is the link to the used -> [Dataset](https://www.kaggle.com/kazanova/sentiment140)
 
@@ -25,7 +24,7 @@ Here is the link to the used -> [Dataset](https://www.kaggle.com/kazanova/sentim
 Recommended: Use Conda for your virtual environment.
 
 *Python Version: 3.9.12*
-Run the following line for installing the necessary dependencies into your virtual environment.
+Run the following line to install the necessary dependencies into your virtual environment.
 > pip install -r requirements.txt
 
 #### Flask API
@@ -33,10 +32,10 @@ Run the following line for installing the necessary dependencies into your virtu
 The basic API configuration is present and is self-sufficient to get a response(sentiment) from your POST request at
 the port you create.
 
-*By default, the Port exposed is 4000*
+*By default, the port exposed is 4000*
 #### Docker
 Dockerfile has the necessary configuration to build your images and run your containers. Run this command to build your Docker image from the Docker File
-* ***Note: It is important to tag your image with an appropriate name and label otherwise the name is chosen at random and label will always be 'latest'*** 
+* ***Note: It is important to tag your image with an appropriate name and label otherwise the name is chosen at random and the label will always be 'latest'*** 
 > docker build . -t <Insert_Any_Unique_Name>:<Add_Label>
 
 For the Kubernetes Demo, use the following tag (If not then replace the image name in deployment.yaml with the one used to build it)
@@ -47,15 +46,15 @@ Kubernetes is a powerful tool for managing containerized applications in product
 #### Important
 - Before going through this section, it is recommended to familiarize yourself with APIs and Docker Images and Containers.
 - It is assumed that Docker has been installed locally, if not, go to this link to install [Docker](https://docs.docker.com/desktop/install/linux-install/)
-- The following section only sets you up for Linux based OS (Personally tested on Ubuntu 22.04.01)
+- The following section only sets you up for Linux-based OS (Personally tested on Ubuntu 22.04.01)
 ### Installation
-* **Virtualbox** - Minikube is meant to run in a virtual machine (VM) so you will need virtualization software to act as the VM driver. By default, `docker` is set as the VM driver, however, it is extremely limited and debugging the issues are a headache so it's best to use Virtualbox instead. Installation instructions can be found [here](https://www.virtualbox.org/wiki/Downloads).
+* **Virtualbox** - Minikube is meant to run in a virtual machine (VM) so you will need virtualization software to act as the VM driver. By default, `docker` is set as the VM driver, however, it is extremely limited and debugging the issues is a headache so it's best to use Virtualbox instead. Installation instructions can be found [here](https://www.virtualbox.org/wiki/Downloads).
 
 * **kubectl** - the command line tool for interacting with Kubernetes clusters. Installation instructions can be found [here](https://kubernetes.io/docs/tasks/tools/)
 
 * **Minikube** - a Kubernetes distribution geared towards new users and development work. It is not meant for production deployments however since it can only run a single node cluster on your machine. Installation instructions [here](https://minikube.sigs.k8s.io/docs/start/).
 
-The configuration of the minikube cluster I set are as follows:
+The configuration of the minikube cluster I set is as follows:
 - Minikube Version: 1.26.0-beta.1
 - Driver: Virtualbox
 - Kubernetes Version: 1.23.6
@@ -78,14 +77,14 @@ This file has all the necessary configurations to create a deployment within the
 
 *Important: In case the image tag isn't k8s-demo:v1, replace it with your own.*
 
-Execute the following command to create a deployment type object in your cluster
+Execute the following command to create a deployment-type object in your cluster
 > kubectl apply -f yaml/deployment.yaml
 
 After running this, wait until the pod is ready. To see the status of the pod, run the following command:
 > kubectl get all
 
-It'll take a few minutes for the pod to get ready. If it doesn't, debug and resolve the issue (try changing the kubernetes or kubectl versions).
-Don't proceed until this part is done.
+It'll take a few minutes for the pod to get ready. In case this doesn't work, debug and resolve the issue (try changing the Kubernetes or kubectl versions).
+Do not proceed until this part is done.
 #### Service
 This file has all the necessary configurations to create a service (external) which uses the deployment type object created previously and exposes it to calls from outside the cluster.
 
@@ -93,7 +92,7 @@ Execute the following command to create a service
 > kubectl apply -f yaml/service.yaml
 
 #### Autoscale
-This file has the necessary instructions to horizontally scale, up (or down), the number of replicas of your Deployment based on certain conditions.
+This file has the instructions to scale up (or down) the number of replicas your Deployment has based on certain conditions.
 
 Execute the following command to create
 > kubectl apply -f yaml/autoscale.yaml
@@ -103,7 +102,7 @@ Execute the following command to create
 Open the dashboard by running the following command
 > minikube dashboard
 
-On the dashboard, you'll see the current status of your cluster (number of pods, usage etc).
+On the dashboard, you'll see the current status of your cluster (number of pods, usage etc.).
 
 The request.sh script sends a request to the service type object created previously. By running this, you'll be sending a POST request to an API within the cluster through this service in a loop (Interval of 0.1s).
 *Important: Check the IP of the Minikube and replace the Host in the bash script if it's different.*
@@ -115,5 +114,5 @@ While the bash script is running, you'll notice an increase in the usage of the 
 Moreover, the time taken for a request to be completed will also be slower than the rate at which it is being sent (by you).
 This part is where the Horizontal Pod Autoscalar will come into play.
 
-After a few minutes, you'll observe that the number of pods will increase due to increase in the demand (number of requests received by the service).
-As soon as more number of pods are 'available', you'll notice an increase in the speed at which the requests are being fullfilled plus a decrease in the usage (per pod).
+After a few minutes, you'll observe that the number of pods will increase due to an increase in the demand (number of requests received by the service).
+As soon as more pods are 'available', you'll notice an increase in the speed at which the requests are being fulfilled plus a decrease in the usage (per pod).
